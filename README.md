@@ -1,4 +1,4 @@
-# Install Guide — RKE2 + MetalLB + Argo CD (Vendored Charts)
+# Install Guide — RKE2 + MetalLB + Argo CD
 
 This guide installs a single-node **RKE2** Kubernetes control plane and deploys **MetalLB** and **Argo CD** using **vendored Helm charts**
 from this repo. It also documents the **app‑of‑apps** pattern so Argo CD can manage MetalLB and **itself**.
@@ -9,9 +9,9 @@ from this repo. It also documents the **app‑of‑apps** pattern so Argo CD can
 ## Repo structure
 
 ```
-.
-└── gitops/
-    ├── vendor-versions.env                 # ARGOCD_CHART_VERSION, METALLB_CHART_VERSION
+
+── gitops/
+    ├── vendor-versions.env                 # Helmsharts
     ├── scripts/
     │   └── vendor_charts.sh                # fetches charts into vendor/
     │
@@ -21,28 +21,27 @@ from this repo. It also documents the **app‑of‑apps** pattern so Argo CD can
     ├── argocd/
     │   ├── values/
     │   │   ├── base.yaml                   # baseline values
-    │   │   └── custom-values.yaml          # your LB IP + --insecure, etc.
+    │   │   └── custom-values.yaml          
     │   ├── vendor/
-    │   │   ├── argo-cd-9.0.5/              # vendored chart (has Chart.yaml)
-    │   │   └── argo-cd -> argo-cd-9.0.5    # (recommended) symlink to current version
+    │   │   ├── argo-cd-9.0.5/              
+    │   │   └── argo-cd -> argo-cd-9.0.5    # symlink to current version
     │   └── app.yaml                        # Argo CD self-managing Application
     │
     ├── metallb/
     │   ├── values/
-    │   │   └── base.yaml                   # minimal chart values
+    │   │   └── base.yaml                   
     │   ├── manifests/
-    │   │   ├── ipaddresspool.yaml          # e.g. 192.168.68.240–250 (EDIT!)
+    │   │   ├── ipaddresspool.yaml          
     │   │   └── l2advertisement.yaml
     │   ├── vendor/
-    │   │   ├── metallb-0.15.2/             # vendored chart (has Chart.yaml)
-    │   │   └── metallb -> metallb-0.15.2   # (recommended) symlink to current version
+    │   │   ├── metallb-0.15.2/             
+    │   │   └── metallb -> metallb-0.15.2   
     │   ├── app-metallb.yaml                # Application (wave 0) installs chart
     │   └── app-metallb-config.yaml         # Application (wave 1) applies pool/L2
     │
     └── INSTALL.md / README.md              # this doc
 ```
 
-> If you don't use the symlinks, set Application `spec.source.path` to the versioned folder (e.g. `vendor/argo-cd-9.0.5`).
 
 ---
 
@@ -94,8 +93,9 @@ You should see the node `Ready` and core pods starting/Running.
 
 ```bash
 # Edit versions here to bump later
-sed -n '1,200p' gitops/vendor-versions.env
-
+sed -n '1,200p' vendor-versions.env
+```
+```bash
 # Vendor the exact chart versions into ./gitops/*/vendor/
 bash gitops/scripts/vendor_charts.sh
 ```
@@ -184,11 +184,11 @@ Access options:
 
 ---
 
-## 5) App‑of‑Apps: let Argo CD manage itself and MetalLB
+## 5) Let Argo CD manage itself and MetalLB
 
 This repo includes a root **Application** (`gitops/clusters/prod.yaml`) that scans the `gitops/` tree and applies any Application YAMLs.
 
-Apply the root Application (after Argo CD is installed once):
+Apply the root Application (after Argo CD is installed):
 ```bash
 kubectl apply -f gitops/clusters/prod.yaml
 kubectl -n argocd get applications
