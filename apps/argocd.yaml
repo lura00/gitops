@@ -1,24 +1,8 @@
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
-  name: argocd
-  namespace: argocd
 spec:
-  project: default
   source:
     repoURL: https://github.com/kjellbovin-io/gitops.git
-    path: gitops/argocd/vendor/argo-cd      # <- symlink to current version
-    targetRevision: HEAD
+    path: argocd/vendor/argo-cd-9.0.5
     helm:
       valueFiles:
         - ../../values/base.yaml
-        - ../../values/custom-values.yaml   # <- fixed LB IP, --insecure, etc.
-  destination:
-    server: https://kubernetes.default.svc
-    namespace: argocd
-  syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
-    syncOptions:
-      - CreateNamespace=true
+        - ../../values/custom-values.yaml

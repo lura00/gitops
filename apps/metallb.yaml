@@ -1,25 +1,7 @@
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
-  name: metallb
-  namespace: argocd
-  annotations:
-    argocd.argoproj.io/sync-wave: "0"
 spec:
-  project: default
   source:
     repoURL: https://github.com/kjellbovin-io/gitops.git
-    path: gitops/metallb/vendor/metallb   # symlink to latest version
-    targetRevision: HEAD
+    path: metallb/vendor/metallb-0.15.2
     helm:
       valueFiles:
         - ../../values/base.yaml
-  destination:
-    server: https://kubernetes.default.svc
-    namespace: metallb-system
-  syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
-    syncOptions:
-      - CreateNamespace=true
