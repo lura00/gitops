@@ -7,10 +7,10 @@ spec:
   project: default
   source:
     repoURL: https://github.com/kjellbovin-io/gitops.git
-    path: gitops
-    targetRevision: HEAD
+    targetRevision: main          
+    path: .                       # <— repo root 
     directory:
-      recurse: true        # <- pick up all Application YAMLs under gitops/
+      recurse: true
   destination:
     server: https://kubernetes.default.svc
     namespace: argocd
