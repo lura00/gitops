@@ -7,10 +7,14 @@ spec:
   project: default
   source:
     repoURL: https://github.com/kjellbovin-io/gitops.git
-    targetRevision: main          
-    path: .                       # <— repo root 
+    targetRevision: main          # or your branch
+    path: .                       # repo root is fine
     directory:
       recurse: true
+      exclude: |
+        argocd/vendor/**
+        metallb/vendor/**
+        **/charts/**
   destination:
     server: https://kubernetes.default.svc
     namespace: argocd
