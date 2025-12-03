@@ -6,7 +6,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/kjellbovin-io/gitops.git
+    repoURL: https://github.com/lura00/gitops.git
     targetRevision: main
     # match this to your vendored folder:
     # kube-state-metrics/vendor/kube-state-metrics-6.3.0  or  kube-state-metrics/vendor/kube-state-metrics-6.4.0

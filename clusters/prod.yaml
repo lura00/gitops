@@ -6,7 +6,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/kjellbovin-io/gitops.git
+    repoURL: https://github.com/lura00/gitops.git
     targetRevision: main            # or your branch
     path: apps                      # <-- only Application objects live here
     directory:

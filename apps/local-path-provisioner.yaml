@@ -6,7 +6,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/kjellbovin-io/gitops.git
+    repoURL: https://github.com/lura00/gitops.git
     targetRevision: main
     path: local-path-provisioner/vendor/local-path-provisioner-0.0.33
     helm:
