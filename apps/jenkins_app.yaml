@@ -7,11 +7,12 @@ spec:
   project: default
   source:
     repoURL: https://github.com/lura00/gitops.git
-    chart: jenkins
-    targetRevision: HEAD
+    # chart: jenkins
+    targetRevision: main
+    path: jenkins/Chart.yaml
     helm:
       valueFiles:
-        - values.yaml
+        - jenkins/values.yaml
   destination:
     server: https://kubernetes.default.svc
     namespace: jenkins
