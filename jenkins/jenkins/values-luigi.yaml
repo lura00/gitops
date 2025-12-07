@@ -308,34 +308,7 @@ controller:
       timeoutSeconds: 5
 
       # If Startup Probe is not supported on your Kubernetes cluster, you might want to use "initialDelaySeconds" instead.
-      # It delays the initial readiness probe while Jenkins is starting
-      # -- Set the initial delay for the readiness probe in seconds
-      initialDelaySeconds:
 
-  # PodDisruptionBudget config
-  podDisruptionBudget:
-    # ref: https://kubernetes.io/docs/tasks/run-application/configure-pdb/
-
-    # -- Enable Kubernetes Pod Disruption Budget configuration
-    enabled: false
-
-    # For Kubernetes v1.5+, use 'policy/v1beta1'
-    # For Kubernetes v1.21+, use 'policy/v1'
-    # -- Policy API version
-    apiVersion: "policy/v1beta1"
-
-    annotations: {}
-    labels: {}
-    # -- Number of pods that can be unavailable. Either an absolute number or a percentage
-    maxUnavailable: "0"
-
-  # -- Create Agent listener service
-  agentListenerEnabled: true
-  # -- Listening port for agents
-  agentListenerPort: 50000
-  # -- Host port to listen for agents
-  agentListenerHostPort:
-  # -- Node port to listen for agents
   agentListenerNodePort:
 
   # ref: https://kubernetes.io/docs/concepts/services-networking/service/#traffic-policies
