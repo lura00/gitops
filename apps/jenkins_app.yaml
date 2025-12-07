@@ -8,7 +8,7 @@ spec:
   source:
     repoURL: https://github.com/lura00/gitops.git
     targetRevision: main
-    path: jenkins              # <-- FIXED
+    path: jenkins/jenkins             # <-- FIXED
     helm:
       valueFiles:
         - values.yaml          # <-- FIXED
