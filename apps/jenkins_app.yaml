@@ -6,9 +6,9 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://charts.bitnami.com/bitnami
+    repoURL: https://github.com/lura00/gitops.git
     chart: jenkins
-    targetRevision: 12.0.6
+    targetRevision: main
     helm:
       valueFiles:
         - values.yaml
