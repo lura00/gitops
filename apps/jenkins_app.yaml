@@ -8,7 +8,7 @@ spec:
   source:
     repoURL: https://github.com/lura00/gitops.git
     chart: jenkins
-    targetRevision: main
+    targetRevision: HEAD
     helm:
       valueFiles:
         - values.yaml
