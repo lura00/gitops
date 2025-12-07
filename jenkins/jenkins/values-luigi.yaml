@@ -275,7 +275,7 @@ controller:
         # -- Set the Pod's HTTP path for the startup probe
         path: '{{ default "" .Values.controller.jenkinsUriPrefix }}/login'
         # -- Set the Pod's HTTP port to use for the startup probe
-        port: http
+        port: 8081
       # -- Set the time interval between two startup probes executions in seconds
       periodSeconds: 10
       # -- Set the timeout for the startup probe in seconds
@@ -288,7 +288,7 @@ controller:
         # -- Set the Pod's HTTP path for the liveness probe
         path: '{{ default "" .Values.controller.jenkinsUriPrefix }}/login'
         # -- Set the Pod's HTTP port to use for the liveness probe
-        port: http
+        port: 8081
       # -- Set the time interval between two liveness probes executions in seconds
       periodSeconds: 10
       # -- Set the timeout for the liveness probe in seconds
@@ -306,7 +306,7 @@ controller:
         # -- Set the Pod's HTTP path for the liveness probe
         path: '{{ default "" .Values.controller.jenkinsUriPrefix }}/login'
         # -- Set the Pod's HTTP port to use for the readiness probe
-        port: http
+        port: 8081
       # -- Set the time interval between two readiness probes executions in seconds
       periodSeconds: 10
       # -- Set the timeout for the readiness probe in seconds
