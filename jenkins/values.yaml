@@ -44,7 +44,7 @@ kubeVersion: ""
 nameOverride: ""
 ## @param fullnameOverride String to fully override common.names.fullname
 ##
-fullnameOverride: "jenkins_mario"
+fullnameOverride: ""
 ## @param replicaCount Number of container replicas
 ##
 replicaCount: 1
