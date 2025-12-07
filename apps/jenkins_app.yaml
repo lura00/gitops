@@ -7,12 +7,11 @@ spec:
   project: default
   source:
     repoURL: https://github.com/lura00/gitops.git
-    # chart: jenkins
     targetRevision: main
-    path: jenkins/Chart.yaml
+    path: jenkins              # <-- FIXED
     helm:
       valueFiles:
-        - jenkins/values.yaml
+        - values.yaml          # <-- FIXED
   destination:
     server: https://kubernetes.default.svc
     namespace: jenkins
@@ -20,3 +19,4 @@ spec:
     automated:
       prune: true
       selfHeal: true
+
