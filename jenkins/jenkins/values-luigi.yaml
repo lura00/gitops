@@ -33,6 +33,11 @@ renderHelmLabels: true
 extraLabels: {}
 
 controller:
+  containerPort: 8081
+  jenkinsOpts: "--httpPort=8081"
+  servicePort: 8081
+  targetPort: 8081
+
   # -- Used for label app.kubernetes.io/component
   componentName: "jenkins-controller"
   image:
