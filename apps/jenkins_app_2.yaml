@@ -11,7 +11,7 @@ spec:
     path: jenkins/jenkins             # <-- FIXED
     helm:
       valueFiles:
-        - values.yaml          # <-- FIXED
+        - values-luigi.yaml          # <-- FIXED
   destination:
     server: https://kubernetes.default.svc
     namespace: jenkins
