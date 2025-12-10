@@ -676,7 +676,7 @@ controller:
 
   ingress:
     # -- Enables ingress
-    enabled: false
+    enabled: true
 
     # Override for the default paths that map requests to the backend
     # -- Override for the default Ingress paths
@@ -690,16 +690,14 @@ controller:
     #     # Don't use string here, use only integer value!
     #     servicePort: 8080
 
-    # For Kubernetes v1.14+, use 'networking.k8s.io/v1beta1'
-    # For Kubernetes v1.19+, use 'networking.k8s.io/v1'
+    # For Kubernetes >=1.19 use 'networking.k8s.io/v1'
     # -- Ingress API version
-    apiVersion: "extensions/v1beta1"
+    apiVersion: "networking.k8s.io/v1"
     # -- Ingress labels
     labels: {}
-    # -- Ingress annotations
+    # -- Ingress annotations (update ingress class to match your controller)
     annotations:
-      {}
-      # kubernetes.io/ingress.class: nginx
+      kubernetes.io/ingress.class: "nginx"
       # kubernetes.io/tls-acme: "true"
     # For Kubernetes >= 1.18 you should specify the ingress-controller via the field ingressClassName
     # See https://kubernetes.io/blog/2020/04/02/improvements-to-the-ingress-api-in-kubernetes-1.18/#specifying-the-class-of-an-ingress
@@ -707,15 +705,18 @@ controller:
 
     # Set this path to jenkinsUriPrefix above or use annotations to rewrite path
     # -- Ingress path
-    path:
+    path: "/"
 
     # configures the hostname e.g. jenkins.example.com
     # -- Ingress hostname
-    hostName:
+    hostName: "jenkins.example.com"
     # -- Hostname to serve assets from
     resourceRootUrl:
-    # -- Ingress TLS configuration
-    tls: []
+    # -- Ingress TLS configuration (placeholder secret and host)
+    tls:
+      - secretName: jenkins-tls
+        hosts:
+          - "jenkins.example.com"
     # - secretName: jenkins.cluster.local
     #   hosts:
     #     - jenkins.cluster.local
