@@ -42,12 +42,12 @@ controller:
   componentName: "jenkins-controller"
   image:
     # -- Controller image registry
-    registry: "docker.io"
+    registry: "dockerhubusername/lura00"
     # -- Controller image repository
-    repository: "jenkins/jenkins"
+    repository: "lura00/jenkins"
 
     # -- Controller image tag override; i.e., tag: "2.440.1-jdk21"
-    tag:
+    tag: "1.0.0"
 
     # -- Controller image tag label
     tagLabel: jdk21
@@ -55,6 +55,7 @@ controller:
     pullPolicy: "Always"
   # -- Controller image pull secret
   imagePullSecretName:
+    - name: dockerhub-regcred
   # -- Lifecycle specification for controller-container
   lifecycle: {}
   #  postStart:
