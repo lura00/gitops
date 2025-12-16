@@ -53,9 +53,8 @@ controller:
     tagLabel: jdk21
     # -- Controller image pull policy
     pullPolicy: "Always"
-  # -- Controller image pull secret
-  imagePullSecretName:
-    - name: dockerhub-regcred
+  # -- Controller image pull secret (string: name of existing Secret)
+  imagePullSecretName: "dockerhub-regcred"
   # -- Lifecycle specification for controller-container
   lifecycle: {}
   #  postStart:

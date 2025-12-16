@@ -1,0 +1,9 @@
+{
+  "auths": {
+    "https://index.docker.io/v1/": {
+      "username": "lura00",
+      "password": "dckr_pat_tpUgAsf9nVhkBDOgradjCpj0Ma0",
+      "auth": "BASE64(username:token)"
+    }
+  }
+}
