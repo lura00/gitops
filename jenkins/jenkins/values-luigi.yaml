@@ -42,7 +42,7 @@ controller:
   componentName: "jenkins-controller"
   image:
     # -- Controller image registry
-    registry: "dockerhubusername/lura00"
+    registry: "docker.io"
     # -- Controller image repository
     repository: "lura00/jenkins"
 
